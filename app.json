@@ -1,0 +1,19 @@
+{
+  "name": "fed18-final-project-dakota",
+  "scripts": {},
+  "env": {
+    "USER": {
+      "required": true
+    },
+    "PASS": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

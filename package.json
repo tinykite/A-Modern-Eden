@@ -1,0 +1,85 @@
+{
+  "name": "fed18-final-project-dakota",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sparkbox/fed18-final-project-dakota"
+  },
+  "author": "Sparkbox",
+  "license": "ISC",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "prestart": "npm run clean",
+    "start": "node tasks/start.js",
+    "clean": "rimraf dist/",
+    "server": "node tasks/server.js",
+    "watch": "concurrently 'node tasks/watch.js' 'webpack --watch'",
+    "js": "webpack",
+    "eslint": "eslint src/js/**/*.js lib/**/*.js --color",
+    "test": "npm run test:js",
+    "test:js": "npm run eslint",
+    "patterns": "node tasks/patterns.js",
+    "copy": "node tasks/copy.js",
+    "sass": "node-sass src/scss/ -o dist/css/ --output-style compressed",
+    "cachebust": "node ./node_modules/@sparkbox/cachebust/index.js",
+    "cachebust:restore": "node ./node_modules/@sparkbox/cachebust/index.js --restore",
+    "cachebust:build": "npm run sass && npm run js && npm run cachebust"
+  },
+  "cachebust": {
+    "source": [
+      "dist/css/base.css",
+      "dist/js/main.js"
+    ],
+    "target": [
+      "dist/index.html"
+    ]
+  },
+  "dependencies": {
+    "@sparkbox/cachebust": "^0.1.1",
+    "@sparkbox/downpour": "0.0.9",
+    "anchor-js": "^4.1.0",
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "chokidar": "^2.0.0",
+    "colors": "^1.1.2",
+    "compression": "^1.7.2",
+    "concurrently": "^3.5.1",
+    "core-js": "^2.5.5",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "express": "^4.16.2",
+    "express-enforces-ssl": "^1.1.0",
+    "globby": "^8.0.1",
+    "handlebars-helpers": "^0.10.0",
+    "lodash": "^4.17.4",
+    "marshmallows": "^0.1.1",
+    "mime": "^1.6.0",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.1.1",
+    "rellax": "^1.6.2",
+    "rimraf": "^2.6.2",
+    "roman-numeral": "^0.2.6",
+    "sass-list-maps": "^1.0.0-b",
+    "shelljs": "^0.7.8",
+    "stylelint": "^7.10.1",
+    "stylelint-config-sparkbox": "^0.1.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-scss": "^1.4.4",
+    "supports-color": "^5.1.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4"
+  }
+}
