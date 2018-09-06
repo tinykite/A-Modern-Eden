@@ -4,11 +4,10 @@
 
 
 // TOOLS
-
-
+@import "tools.functions";
+@import "tools.typography";
+@import "tools.colors";
 // SETTINGS
-
-
 // GENERIC
 
 
@@ -20,7 +19,6 @@
 
 // COMPONENTS
 @import "components.demo";
-
 
 // VENDORS
 
