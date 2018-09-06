@@ -1,3 +1,19 @@
-.cmp-demo {
-  font-size: 2em;
+.hero {
+  background: $olive;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 0 4.3125rem; 
+}
+.hero__heading {
+  font-family: $heading;
+  font-size: 5.3125rem;
+  text-transform: uppercase;
+  color: $white;
+  line-height: 1;
+  margin: 0;
+}
+.hero__heading--emphasis {
+  font-family: $heading-emphasis;
+  display: block;
 }
