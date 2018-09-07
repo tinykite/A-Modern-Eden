@@ -1,0 +1,104 @@
+$section-breakpoint-xxs: 30rem;
+$section-breakpoint-xs: 39rem;
+$section-breakpoint-sm: 44rem;
+$section-breakpoint-md: 60rem;
+$section-breakpoint-lg: 80rem;
+$section-breakpoint-xl: 90rem;
+
+.intro {
+  width: 90%;
+  margin: 0 auto;
+  padding: $spacing-unit;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: $section-breakpoint-sm) {
+    flex-direction: row; // Float the text to the right of the illustration
+    width: 85%;
+  }
+
+  @media (min-width: $section-breakpoint-lg) {
+    max-width: 90rem;
+  }
+
+  &__illustration {
+    @media (min-width: $section-breakpoint-xs) {
+      padding-right: 2rem;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      flex: 1 0 50%; // Make sure the illustration only takes up 50% of the available space
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      padding-right: 5rem;
+    }
+  }
+
+  &__body {
+    max-width: 30rem;
+    padding-top: 1rem; // Include spacing between illustration and text
+    box-sizing: border-box;
+    margin: 0 auto; // Necessary so text block centers underneath illustration
+    
+    @media (min-width: $section-breakpoint-sm) {
+      padding: 0; // Remove spacing when text sits adjacent to illustration
+      flex: 1 0 50%; // Make sure the text takes up 50% of the available space
+    }
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+    font-family: $heading;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+
+    @media (min-width: $section-breakpoint-xs) {
+      font-size: 3.8vw; // 24px / 624x = .038461538 Move the decimal point for vw measurement.
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      margin: 1rem 0;
+      text-align: left; // Align text left once floated to the right of the image
+    }
+
+    @media (min-width: $section-breakpoint-xl) {
+      font-size: 3.25rem; // Set a max font-size
+    }
+  }
+
+  &__heading--emphasis {
+    font-family: $heading-emphasis;
+    font-size: 2rem;
+    display: block;
+    
+    @media (min-width: $section-breakpoint-xxs) {
+      font-size: 6.7vw; // 24px / 480px = .066666667
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      font-size: 5.9vw; // 42px / 704px = .059659091. Move the decimal point for the viewport width.
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      font-size: 4.37rem; // Set a max font size
+    }
+  }
+  &__text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+
+    @media (min-width: $section-breakpoint-sm) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 1.125rem;
+    }
+  }
+}
