@@ -5,9 +5,12 @@ Setup
 -----
 1. Before running the project setup node/npm ([Installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)).
 
-2. Run `npm start`. This will:
+2. Run `npm install`. This will:
 
   - Install/update node modules
+  
+3. Run `npm start`. This will: 
+  
   - Start the server
   - Run watch tasks
 
