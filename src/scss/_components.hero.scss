@@ -1,0 +1,92 @@
+$hero-breakpoint-xs: 30rem;
+$hero-breakpoint-sm: 35rem;
+$hero-breakpoint-md: 44rem;
+$hero-breakpoint-lg: 60rem;
+$hero-breakpoint-xl: 75rem;
+
+.hero {
+  margin: 0;
+  position: relative; // Necessary for illustration positioning
+
+  &__inner {
+    padding: $spacing-unit; 
+    box-sizing: border-box; // Add padding to total container width
+    background: $olive;
+
+    @media (min-width: $hero-breakpoint-lg) {
+      width: 90%; // Constrain the olive backround so the Zebra can sit outside of it
+      margin: 4rem auto; // Adds additional white space for the Zebra
+    }
+
+    @media (min-width: $hero-breakpoint-xl) {
+      margin: 6.25rem auto; // As the zebra grows
+    }
+  }
+
+  &__heading {
+    font-family: $heading;
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    color: $white;
+    line-height: 1;
+    margin: 0;
+    text-align: center;
+    padding-top: $spacing-unit; // Necessary for stacked mobile layout 
+  
+    @media (min-width: $hero-breakpoint-sm) {
+      text-align: left;
+      padding: 0; // Remove xs layout padding
+      font-size: 8vw; // 50px / 624px = .080128205. Move the decimal point for vw width
+    }
+  
+    @media (min-width: $hero-breakpoint-lg) {
+      font-size: 5.3125rem; // Set a max font-size so text doesn't get too big
+    }
+
+    &--emphasis {
+      font-family: $heading-emphasis;
+      display: block; // Force a line break
+    }
+  }
+
+  &__body {
+    font-family: $body;
+    color: $white;
+    text-align: center;
+    padding: 1rem 0 0;
+    margin: 0 auto;
+
+    @media (min-width: $hero-breakpoint-xs) {
+      width: 90%; // Constrain the width of the text block
+    }
+
+    @media (min-width: $hero-breakpoint-sm) {
+      text-align: left;
+      margin: 0; // We don't want the text block centered on the page
+      width: 50%; 
+    }
+
+    @media (min-width: $hero-breakpoint-lg) {
+      font-size: 1.3125rem;
+    }
+  }
+
+  &__illustration {
+    height: 35vh; // At very small sizes, we need the illustration to scale proportionately
+    margin: 0 auto;
+
+    @media (min-width: $hero-breakpoint-sm) {
+      position: absolute;
+      right: $spacing-unit;
+      height: 85%;
+      transform: translateY(50%);
+      bottom: 50%;
+    }
+
+    @media (min-width: $hero-breakpoint-xl) {
+      height: 120%;
+      top: 0;
+      transform: translate(-40%, -10%);
+    }
+  }
+}
