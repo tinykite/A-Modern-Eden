@@ -1,33 +1,39 @@
 @font-face {
-    font-family: "Knockout70";
+    font-family: "Knockout";
     src: url("/fonts/Knockout-70FullWelterwt.woff2") format("woff2"),
         url("/fonts/Knockout-70FullWelterwt.woff") format("woff");
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
-    font-family: "Knockout69";
+    font-family: "Knockout";
     src: url("/fonts/Knockout-69FullLiteweight.woff2") format("woff2"),
         url("/fonts/Knockout-69FullLiteweight.woff") format("woff");
-    font-weight: bold;
+    font-weight: normal;
     font-style: normal;
 }
-@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=0384a359-edb1-43c6-b600-664a930a8179");
-    @font-face{
-        font-family:"AvenirBook";
-        src:url("/fonts/710789a0-1557-48a1-8cec-03d52d663d74.eot?#iefix");
-        src:url("/fonts/710789a0-1557-48a1-8cec-03d52d663d74.eot?#iefix") format("eot"),url("/fonts/065a6b14-b2cc-446e-9428-271c570df0d9.woff2") format("woff2"),url("/fonts/65d75eb0-2601-4da5-a9a4-9ee67a470a59.woff") format("woff"),url("/fonts/c70e90bc-3c94-41dc-bf14-caa727c76301.ttf") format("truetype");
-    }
-    @font-face{
-        font-family:"AvenirBlack";
-        src:url("/fonts/f55e4498-ad48-4577-93a0-c614de5cbbb8.eot?#iefix");
-        src:url("/fonts/f55e4498-ad48-4577-93a0-c614de5cbbb8.eot?#iefix") format("eot"),url("/fonts/c78eb7af-a1c8-4892-974b-52379646fef4.woff2") format("woff2"),url("/fonts/75b36c58-2a02-4057-a537-09af0832ae46.woff") format("woff"),url("/fonts/b5c44a82-eeb8-41de-9c3f-a8db50b24b8a.ttf") format("truetype");
-    }
-$body: "AvenirBook", sans-serif;
-$body-emphasis: "AvenirBlack", sans-serif;
-$heading: "Knockout70", sans-serif;
+@font-face{
+    font-family:"Avenir";
+    src:url("/fonts/710789a0-1557-48a1-8cec-03d52d663d74.eot?#iefix");
+    src:url("/fonts/710789a0-1557-48a1-8cec-03d52d663d74.eot?#iefix") format("eot"),
+    url("/fonts/065a6b14-b2cc-446e-9428-271c570df0d9.woff2") format("woff2"),
+    url("/fonts/65d75eb0-2601-4da5-a9a4-9ee67a470a59.woff") format("woff"),
+    url("/fonts/c70e90bc-3c94-41dc-bf14-caa727c76301.ttf") format("truetype");
+    font-weight: normal;
+}
+@font-face{
+    font-family:"Avenir";
+    src:url("/fonts/f55e4498-ad48-4577-93a0-c614de5cbbb8.eot?#iefix");
+    src:url("/fonts/f55e4498-ad48-4577-93a0-c614de5cbbb8.eot?#iefix") format("eot"),
+    url("/fonts/c78eb7af-a1c8-4892-974b-52379646fef4.woff2") format("woff2"),
+    url("/fonts/75b36c58-2a02-4057-a537-09af0832ae46.woff") format("woff"),
+    url("/fonts/b5c44a82-eeb8-41de-9c3f-a8db50b24b8a.ttf") format("truetype");
+    font-weight: bold;
+}
+$body: "Avenir", sans-serif;
+$body-emphasis: $body;
+$heading: "Knockout", sans-serif;
 $heading-emphasis: "mostra-nuova", sans-serif;
-$subheading: "Knockout69", sans-serif;
 $font-sizes: (
     xxs: 0.875rem, // 14px, mobile text
     xs: 1.125rem, // 18px, mobile h3 level headings
