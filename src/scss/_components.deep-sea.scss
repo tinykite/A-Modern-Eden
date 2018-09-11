@@ -1,0 +1,254 @@
+.env-container {
+    position: relative; // Necessary for absolute positioning of ocean.
+    display: flex; // Necessary for ordering of content + ocean
+    flex-direction: column;
+
+    @media (min-width: $section-breakpoint-xxs)  {
+      display: block; // We don't need flex-based positioning at larger sizes. It'll just create problems!
+      padding: 10vh 0;
+    }
+    
+    @media (min-width: $section-breakpoint-xs) {
+      padding: 12vh 0;
+    }
+}
+
+.ocean {
+  &__environment {
+    order: -1; // Push the illustration above the text
+    height: 35vh; // At its smallest size, the ocean environment needs a set height. 
+    background: bottom / 200% repeat-x url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' data-name='Layer 1' viewBox='0 0 1424 266'%3E%3Cpath fill='%23b1dedf' d='M0 266V0l71 29 35 104 67 55h22l67-70 40 15v25l140 18 28-72 23 2 59 50 34 9 13 30 35 12 52-74V0l34 11 31 77 53 26-25 51 54 25 18-1 18-30 34-146 38 21 67 99 41 81v-38l-11-67 11-32 188 39-40 115 28-12 12-54 70-49 63 75 54-189v264H0z'/%3E%3C/svg%3E"), $deep-sea;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: $section-breakpoint-xs) {
+      background-size: 85%;
+    }
+  }
+
+  &__seaweed {
+    $size: 31.5vh;  // Take up 90% of 35vh, the mobile height of the ocean.
+    height: $size;
+    width: auto;
+    position: absolute;
+    left: calc(100% - #{$size}); // Push seaweed to right edge of window
+    top: calc(35vh - #{$size} + 1.5rem); // Position seaweed just beneath the bottom of the ocean. 
+    opacity: 0.9;
+
+    @media (min-width: $section-breakpoint-xxs) {
+    height: 50vh;
+    left: calc(100% - 50vh); // Recalculate new position for seaweed
+    top: calc(100% - 50vh + 1.5rem);
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      left: calc(100% - 50vh - 5rem);
+    }
+  }
+
+  &__fish {
+    $size: 25vh; // Grow to 60% of the height of ocean, which is 35vh;
+    height: $size; // We'll use viewport widths because we want to make the fish scale with the viewport
+    width: auto;
+    position: absolute;
+    top: calc(35vh / 4); // Push the fish to roughly the middle of the window
+    right: calc(50% - #{$size / 2}); // Push the left edge of the fish to the middle of the screen.
+
+    @media (min-width: $section-breakpoint-xxs) {
+      width: 28vw; // We don't know the height of the window, so let's switch to viewport widths
+      height: auto; // Reset height value
+      right: 8vw;
+      z-index: $z-index-2; // Move in front of the seaweed
+      top: calc(100% - 38vw);
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      right: 4vw;
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      width: 18vw;
+      top: calc(100% - 24vw);
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      right: calc(50% - 8rem);
+      top: 3rem;
+    }
+  }
+}
+
+.story {
+  align-self: center; // Center the text block at mobile sizes, when flexbox is active
+  background: $white;
+  width: 85%;
+  padding: 1.125rem 2.25rem; 
+  box-sizing: border-box;
+  position: relative; // Necessary only for z-index positioning
+  z-index: 1;
+
+  @media (min-width: $section-breakpoint-xxs) {
+    width: 60%;
+    max-width: 35rem;
+    padding: 2.5rem;
+  }
+
+  @media (min-width: $section-breakpoint-lg) {
+    padding: 3rem;
+  }
+
+  &__heading {
+    font-family: $heading;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      text-align: left;
+    }
+
+    @media (min-width: $section-breakpoint-xs) {
+      font-size: 3.8vw; // 24px / 624x = .038461538 Move the decimal point for vw measurement.
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      text-align: left; // Align text left once floated to the right of the image
+    }
+
+    @media (min-width: $section-breakpoint-xl) {
+      font-size: 3.25rem; // Set a max font-size
+    }
+
+    &--emphasis {
+      font-size: 2.6875rem;
+      font-family: $heading-emphasis;
+      display: block;
+
+      @media (min-width: $section-breakpoint-xxs) {
+        font-size: 6.7vw; // 24px / 480px = .066666667
+      }
+  
+      @media (min-width: $section-breakpoint-sm) {
+        font-size: 5.9vw; // 42px / 704px = .059659091. Move the decimal point for the viewport width.
+      }
+  
+      @media (min-width: $section-breakpoint-lg) {
+        font-size: 4.37rem; // Set a max font size
+      }
+    }
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 1rem 0 0;
+
+    @media (min-width: $section-breakpoint-xs) {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      font-size: 1.3125rem;
+    }
+  }
+}
+
+.product-group {
+  position: relative; // Necessary for z-index positioning
+  z-index: $z-index-2; // Layer the products on top of anything in the ocean environment
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: $spacing-unit; // Make sure there's space between this component and the next
+  margin-top: 1rem; // Add white space between story intro block and product cards
+
+  @media (min-width: $section-breakpoint-xxs) {
+    margin: 0; // Remove white space when story intro block moves into the ocean environment
+  }
+
+  @media (min-width: $section-breakpoint-sm) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+.product {
+  background: $white;
+  padding: 3rem 2rem;
+  margin: 0 2rem;
+  box-sizing: border-box;
+  width: 85%;
+  
+  & + & {
+    @media (max-width: $section-breakpoint-sm) {
+      margin-top: 1rem; // Add spacing between product cards when stacked in a single column. 
+    }
+  }
+
+  @media (min-width: $section-breakpoint-xxs) {
+    width: 60%;
+  }
+
+  @media (min-width: $section-breakpoint-sm) {
+    width: 35%;
+    max-width: 30rem;
+    padding: 2rem; // Make padding even when product cards are in a 2-column, small layout
+  }
+
+  @media (min-width: $section-breakpoint-md) {
+    padding: 3.5rem;
+  }
+
+  @media (min-width: $section-breakpoint-lg) {
+    padding: 4.5rem;
+  }
+
+  &__title {
+    font-family: $heading;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 1.125rem; // Set a minimum font size
+    margin: 1.125rem 0 0.25rem;
+    align-self: flex-start;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      margin: 1.5rem 0 0.75rem;
+      font-size: 3.75vw; // 18 / 480 = .0375. Move the decimal point for vw units.
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 2.25rem; // Set a max font size
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      margin: 3rem 0 1.5rem;
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      font-size: 1.3125rem;
+    }
+  }
+}

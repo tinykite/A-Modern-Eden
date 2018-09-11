@@ -7,6 +7,7 @@
 @import "tools.functions";
 @import "tools.typography";
 @import "tools.colors";
+@import "tools.z-index-variables";
 // SETTINGS
 // GENERIC
 @import "generic.foundation";
@@ -20,6 +21,7 @@
 // COMPONENTS
 @import "components.intro";
 @import "components.hero.scss";
+@import "components.deep-sea";
 
 // VENDORS
 
