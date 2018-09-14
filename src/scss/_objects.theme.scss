@@ -1,7 +1,13 @@
-.theme__mint {
-  background: $mint;
-}
-
-.theme__ocean {
-  background: $deep-sea-secondary;
+.theme {
+    &__mint {
+        background: $mint;
+    }
+    
+    &__polar {
+        background: $polar;
+    }
+    
+    &__ocean {
+        background: $deep-sea-secondary;
+    }
 }

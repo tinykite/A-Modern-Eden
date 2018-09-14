@@ -1,0 +1,40 @@
+.polar {
+  &__sun {
+    position: absolute;
+    right: 4vw;
+    top: 8vh;
+    $size: 10vh;
+    height: $size;
+    width: auto;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      height: 16vh;
+      top: 8vh;
+      right: 4vw;
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      height: 20vh;
+      max-height: 10rem; // Prevent sun from growing to massive proportions on larger tablets with portrait orientations
+    }
+  }
+
+  &__bear {
+    $size: 40vw;
+    width: $size;
+    position: absolute;
+    top: calc(37.5vh + 0.25rem); // We have a set mobile height for the illustration of 50vh. 75% of 50vh is 37.5vh.
+    right: calc(50% - #{$size} / 2); // Horizontally center the bear
+
+    @media (min-width: $section-breakpoint-xxs) {
+      width: 30vw;
+      height: auto;
+      top: 80%;
+      right: 5vw; // Keep the polar bear 5% away from the right edge of the window
+    }
+
+    @media (min-width: $section-breakpoint-xs) {
+      top: 75%;
+    }
+  }
+}

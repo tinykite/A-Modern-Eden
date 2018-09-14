@@ -18,11 +18,14 @@
 
 // OBJECTS
 @import "objects.theme";
+@import "objects.environment";
 
 // COMPONENTS
 @import "components.intro";
-@import "components.hero.scss";
-@import "components.deep-sea";
+@import "components.hero";
+@import "components.ocean-objects";
+@import "components.polar-objects";
+@import "components.products";
 
 // VENDORS
 

@@ -1,0 +1,108 @@
+.product-group {
+  position: relative; // Necessary for z-index positioning
+  z-index: $z-index-2; // Layer the products on top of anything in the ocean environment
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: $spacing-unit; // Make sure there's space between this component and the next
+  margin-top: 1rem; // Add white space between story intro block and product cards
+
+  @media (min-width: $section-breakpoint-xxs) {
+    margin: 0; // Remove white space when story intro block moves into the ocean environment
+    padding: 0 0 10vh; // Match padding on the env-container
+  }
+
+  @media (min-width: $section-breakpoint-xs) {
+    padding: 0 0 12vh; // Match padding on env container
+  }
+
+  @media (min-width: $section-breakpoint-sm) {
+    flex-direction: row;
+    align-items: stretch; // Reset to default flexbox value
+    justify-content: center;
+  }
+}
+
+.product {
+  background: $white;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  width: 85%;
+
+  @media (min-width: $section-breakpoint-xxs) {
+    width: 60%;
+    margin: 0 2rem;
+  }
+
+  @media (min-width: $section-breakpoint-sm) {
+    width: 35%;
+    max-width: 30rem;
+    padding: 2rem; // Make padding even when product cards are in a 2-column, small layout
+  }
+
+  @media (min-width: $section-breakpoint-md) {
+    padding: 3.5rem;
+  }
+
+  @media (min-width: $section-breakpoint-lg) {
+    padding: 4.5rem;
+  }
+
+  & + & {
+    @media (max-width: $section-breakpoint-sm) {
+      margin-top: 1rem; // Add spacing between product cards when stacked in a single column. 
+    }
+  }
+
+  &--polar {
+    background: $muted-sky;
+  }
+
+  &__title {
+    font-family: $heading;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 1.125rem; // Set a minimum font size
+    margin: 1.125rem 0 0.25rem;
+    align-self: flex-start;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      margin: 1.5rem 0 0.75rem;
+      font-size: 3.75vw; // 18 / 480 = .0375. Move the decimal point for vw units.
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 2.25rem; // Set a max font size
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      margin: 3rem 0 1.5rem;
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      font-size: 1.3125rem;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+    &--icon {
+      padding: 1.25rem 0 0;
+
+      @media (min-width: $section-breakpoint-md) {
+        padding: 2rem 0 0;
+      }
+    }
+  }
+}
