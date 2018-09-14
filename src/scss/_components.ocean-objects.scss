@@ -1,16 +1,17 @@
 .ocean {
   &__seaweed {
-    $size: 45vh; // Take up 90% of 50vh, the mobile height of the ocean.
+    $size: 31.5vh;  // Take up 90% of 35vh, the mobile height of the ocean.
     height: $size;
     width: auto;
     position: absolute;
     left: calc(100% - #{$size}); // Push seaweed to right edge of window
-    top: calc(50vh - #{$size} + 1.5rem); // Position seaweed just beneath the bottom of the ocean. 
+    top: calc(35vh - #{$size} + 1.5rem); // Position seaweed just beneath the bottom of the ocean. 
     opacity: 0.9;
 
     @media (min-width: $section-breakpoint-xxs) {
-      left: calc(100% - 50vh); // Recalculate new position for seaweed
-      top: calc(100% - 50vh + 3rem);
+    height: 50vh;
+    left: calc(100% - 50vh); // Recalculate new position for seaweed
+    top: calc(100% - 50vh + 1.5rem);
     }
 
     @media (min-width: $section-breakpoint-lg) {
@@ -19,7 +20,7 @@
   }
 
   &__fish {
-    $size: 30vh; // Grow to 60% of the height of ocean, which is 50vh;
+    $size: 25vh; // Grow to 60% of the height of ocean, which is 35vh;
     height: $size; // We'll use viewport widths because we want to make the fish scale with the viewport
     width: auto;
     position: absolute;
