@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: $spacing-unit; // Make sure there's space between this component and the next
+  padding-bottom: 3.75rem; // Make sure there's space between this component and the next
   margin-top: 1rem; // Add white space between story intro block and product cards
 
   @media (min-width: $section-breakpoint-xxs) {
@@ -60,7 +60,8 @@
 
   &__title {
     font-family: $heading;
-    font-weight: normal;
+    font-weight: 400;
+    letter-spacing: 0.0625rem;
     text-transform: uppercase;
     font-size: 1.125rem; // Set a minimum font size
     margin: 1.125rem 0 0.25rem;
@@ -72,7 +73,7 @@
     }
 
     @media (min-width: $section-breakpoint-md) {
-      font-size: 2.25rem; // Set a max font size
+      font-size: 2rem; // Set a max font size
     }
 
     @media (min-width: $section-breakpoint-lg) {

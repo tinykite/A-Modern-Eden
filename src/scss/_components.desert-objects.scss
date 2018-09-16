@@ -1,0 +1,70 @@
+.desert {
+  &__tree {
+    $size: 37.5vh; // 75% of the total environment height, which is 50vh
+    position: absolute;
+    height: $size;
+    width: auto;
+    right: 0;
+    transform: translateX(50%); // Push the tree off-screen.
+    top: 6.5vh; // 80% of the total environment height is 50 * .8 = 40vh. We want to subtract the height of the tree from that. 44 - 27.5 = 6.5.
+
+    @media (min-width: $section-breakpoint-xxs) {
+      width: 50vw; // Switching to viewport widths for the size. We just don't know the height of the window. 
+      height: auto;
+      top: unset;
+      bottom: 20vh; // We want to make sure the tree is never floating at very large sizes, so we'll position it in relation to the bottom of the environment 
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      width: 35vw;
+      top: unset;
+      bottom: 20vh; 
+      transform: translateX(5%); // Pull tree more fully into the viewport
+    }
+  }
+
+  &__lion {
+    $size: 35vw;
+    position: absolute;
+    width: $size;
+    height: auto;
+    top: 45vh; // Push the lion 90% away from the top edge of the component, which is 50vh tall.
+    transform: translateY(-100%); // Pull the bottom edge of the lion to that spot. Using a transform because we don't know the height.
+    right: calc(50% - #{$size} / 2); // Horizontally center the lion, which is easy, cuz we know the width!
+    z-index: $z-index-1; // Make sure Lion never gets covered by grass
+    
+    @media (min-width: $section-breakpoint-xxs) {
+      width: 25vw; // Make sure the lion doesn't grow too big!
+      height: auto;
+      right: 8%; // At tablet sizes, we want to position the lion fairly close to the right edge of the screen
+      top: unset; // Reset previously defined values, so we can use bottom positioning instead
+      transform: translateY(0); // Reset transform
+      bottom: 8vh; // We want the lion fairly close to the bottom edge of the component
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      right: 25%; // At larger sizes, we want the lion fairly close to the story text
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      width: 20vw; // Make sure the lion doesn't grow too large
+    }
+  }
+
+  &__grass {
+    display: none; // Hide at mobile
+
+    @media (min-width: $section-breakpoint-md) {
+      display: block; // Rewrite previous value
+      position: absolute;
+      right: 2vw; // This will keep the grass 2% away from the right edge of the window
+      bottom: 12vh;
+      height: 16vh;
+      width: auto;
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      height: 18vh;
+    }
+  }
+}
