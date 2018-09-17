@@ -1,0 +1,110 @@
+.accolades {
+  position: relative; // Necessary for illustration positioning
+  margin: 0 auto;
+  background: $white;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 90%;
+
+  @media (min-width: $section-breakpoint-xxs) {
+    width: 75%;
+    padding: 2.75rem 2rem;
+  }
+
+  @media (min-width: $section-breakpoint-sm) {
+    width: 50%;
+  }
+
+  @media (min-width: $section-breakpoint-md) {
+    padding: 4.5rem 2.5rem;
+  }
+
+  &__heading {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.5rem; // Set a min font size
+    text-transform: uppercase;
+    font-family: $heading;
+    text-align: center;
+    
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 2.625rem;
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      font-size: 3.125rem; // Set a max font size
+    }
+  }
+
+  &__text {
+    font-family: $body;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 1rem;
+    margin: 1rem auto;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      margin: 1.5rem auto;
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 1.3125rem;
+      width: 75%;
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      margin: 3rem auto;
+      width: 75%;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+    max-width: 35vw;
+
+    @media (min-width: $section-breakpoint-sm) {
+      max-width: 25vw; // Awkward inbetween size where images take up too much visual weight
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      max-width: 40vw; // Let images take up more visual weight when there's available real estate
+    }
+
+    & + & {
+    margin: 1rem auto 0; 
+
+      @media (min-width: $section-breakpoint-xxs) {
+        margin: 1.5rem auto 0;
+      }
+
+      @media (min-width: $section-breakpoint-lg) {
+        margin: 2.25rem auto 0;
+      }
+    }
+  }
+  
+  &__illustration {
+    display: none;
+
+    @media (min-width: $section-breakpoint-sm) {  
+      // We know that the text block will take up 50% of the total available space.
+      // We also know that we want the jellyfish to live in the gutters surrounding that block, which is 25% on either side.
+      // So we'll set the Jellyfish at a width of one-half of 25vw, or 12.5vw.
+      display: block; 
+      position: absolute;
+      width: 12.5vw;
+      height: auto;
+      right: calc(100% + 6.25vw);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      width: 10vw;
+      right: calc(100% + 4vw); // Keep Jellyfish closer to the content block at large sizes
+    }
+  }
+}
