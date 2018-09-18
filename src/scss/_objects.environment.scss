@@ -1,39 +1,37 @@
 .env {
-  &__container {
-    position: relative; // Necessary for absolute positioning of ocean.
-    display: flex; // Necessary for ordering of content + ocean
-    flex-direction: column;
+  position: relative; // Necessary for absolute positioning of ocean.
+  display: flex; // Necessary for ordering of content + ocean
+  flex-direction: column;
 
-    @media (min-width: $section-breakpoint-xxs)  {
-      display: block; // We don't need flex-based positioning at larger sizes. It'll just create problems!
-      padding: 10vh 0;
-    }
+  @media (min-width: $section-breakpoint-xxs)  {
+    display: block; // We don't need flex-based positioning at larger sizes. It'll just create problems!
+    padding: 10vh 0;
+  }
     
+  @media (min-width: $section-breakpoint-xs) {
+    padding: 12vh 0;
+  }
+
+  &--polar { // Polar scene needs additional vertical space for the ocean
+
+    @media (min-width: $section-breakpoint-xxs) {
+      padding: 10vh 0 12vh;
+    }
+
     @media (min-width: $section-breakpoint-xs) {
-      padding: 12vh 0;
-    }
-
-    &--polar { // Polar scene needs additional vertical space for the ocean
-
-      @media (min-width: $section-breakpoint-xxs) {
-        padding: 10vh 0 12vh;
-      }
-
-      @media (min-width: $section-breakpoint-xs) {
-        padding: 12vh 0 18vh;
-      }
-    }
-
-    &--desert { // Desert needs additional space on top and bottom of the container
-      overflow: hidden; // We're defining this so we can push the tree off-screen
-
-      @media (min-width: $section-breakpoint-xs) {
-        padding: 18vh 0 12vh;
-      }
+      padding: 12vh 0 18vh;
     }
   }
 
-  &__environment {
+  &--desert { // Desert needs additional space on top and bottom of the container
+    overflow: hidden; // We're defining this so we can push the tree off-screen
+
+    @media (min-width: $section-breakpoint-xs) {
+      padding: 18vh 0 12vh;
+    }
+  }
+
+  &__landscape {
     order: -1; // Push the illustration above the text
     height: 50vh; // At its smallest size, the environment needs a set height. 
 
@@ -57,33 +55,33 @@
 
     &--polar {
       background: bottom right / contain repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 388"><g fill="none" fill-rule="nonzero"><path fill="#B8D7E6" d="M-3 268h323v120H-3z"/><path fill="#FFF" d="M0 0h323v271H0z"/><path fill="#E5F0F6" d="M0 272l21.48-121.25 15.08 70.39L65.8 52l27.88 108.3 14.16-70.92 34.46 175.55 17.18-81.89 19.19 81.89 36.56-116.51 27.66 116.51L262 207.65l15.97 44.13 23.62-85.24L320 272"/></g></svg>'), $white;
-   }
-
-   &--desert {
-    // We'll define three different layered backgrounds here for the desert.
-    // These backgrounds are layered in this order (first listed background is layered on top):
-    // Svg-based clouds, positioned 10% from the top of the screen (Note: the svg itself has additional padding!)
-    // Svg-based "hills", positioned 70% from the top of the desert
-    // A linear gradient background color with zero color stops (eg, no transition). The gradient is 30% sky and 70% desert.
-    // Also note: The svgs are passed to a "svg-url" function, which returns an IE-compatible data URI
-     background: 0% 10% / 70% no-repeat svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 696 241"><defs><style>.cls-1{fill:#a3ccdd;}.cls-2{fill:#fefefe;}</style></defs><title>cloud-box-not-wide</title><g id="Layer_2" data-name="Layer 2"><path id="deep-blue-cloud" class="cls-1" d="M384.67,175a16.84,16.84,0,0,0,.33-3.35A17.36,17.36,0,0,0,355,159.74a17.3,17.3,0,0,0-11.65-5.46,25.16,25.16,0,0,0-30.39-14.74,37.28,37.28,0,0,0-35.23-25.17,37.82,37.82,0,0,0-4.28.27,48.08,48.08,0,0,0-40.4-22,48.73,48.73,0,0,0-8.07.72,56,56,0,0,0-89.72,14.55,41.47,41.47,0,0,0-43.73,67Z"/><path id="white-cloud" class="cls-2" d="M612.58,120.5a11.23,11.23,0,0,0-19.24-9.85,11.21,11.21,0,0,0-7.55-3.54,16.33,16.33,0,0,0-15.13-10.2,16.75,16.75,0,0,0-4.56.65,24.13,24.13,0,0,0-22.81-16.29,23,23,0,0,0-2.77.17,30.88,30.88,0,0,0-31.39-13.78A36.29,36.29,0,0,0,451,77.08a26.87,26.87,0,0,0-28.32,43.42Z"/></g></svg>'), 
-     0% 60% / 100% repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1444 135"><path fill="#DFDCAC" fill-rule="nonzero" d="M1444 133.09L0 134.34l.47-133 129 29.27 49.19 24.26h29.14l145.5-18.16L537.44 3.44 783.56 55l279.09-21.35 162.15 21.22h28.72l85.2-42.42L1444 .18"/></svg>'), 
-     linear-gradient(0deg, $sand 40%, #E5F0F6 40%); // Make the sky vertically take up 30% of the environment
-
-    @media (min-width: $section-breakpoint-xxs) {
-      background-position: 100% 5%, 0% 60%, center; // Remove additional padding on the clouds. They'll still have the padding defined in the svg itself.
-      background-size: 50%, 60%, 100%; // Make the clouds smaller if there's enough real estate for the tree to take up more space
     }
 
-    @media (min-width: $section-breakpoint-xs) {
-      background-position: top left, 0% 60%, center; // Remove additional padding on the clouds. They'll still have the padding defined in the svg itself.
-      background-size: 50%, 60%, 100%; // Make the clouds smaller if there's enough real estate for the tree to take up more space
-    }
+    &--desert {
+      // We'll define three different layered backgrounds here for the desert.
+      // These backgrounds are layered in this order (first listed background is layered on top):
+      // Svg-based clouds, positioned 10% from the top of the screen (Note: the svg itself has additional padding!)
+      // Svg-based "hills", positioned 70% from the top of the desert
+      // A linear gradient background color with zero color stops (eg, no transition). The gradient is 30% sky and 70% desert.
+      // Also note: The svgs are passed to a "svg-url" function, which returns an IE-compatible data URI
+      background: 0% 10% / 70% no-repeat svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 696 241"><defs><style>.cls-1{fill:#a3ccdd;}.cls-2{fill:#fefefe;}</style></defs><title>cloud-box-not-wide</title><g id="Layer_2" data-name="Layer 2"><path id="deep-blue-cloud" class="cls-1" d="M384.67,175a16.84,16.84,0,0,0,.33-3.35A17.36,17.36,0,0,0,355,159.74a17.3,17.3,0,0,0-11.65-5.46,25.16,25.16,0,0,0-30.39-14.74,37.28,37.28,0,0,0-35.23-25.17,37.82,37.82,0,0,0-4.28.27,48.08,48.08,0,0,0-40.4-22,48.73,48.73,0,0,0-8.07.72,56,56,0,0,0-89.72,14.55,41.47,41.47,0,0,0-43.73,67Z"/><path id="white-cloud" class="cls-2" d="M612.58,120.5a11.23,11.23,0,0,0-19.24-9.85,11.21,11.21,0,0,0-7.55-3.54,16.33,16.33,0,0,0-15.13-10.2,16.75,16.75,0,0,0-4.56.65,24.13,24.13,0,0,0-22.81-16.29,23,23,0,0,0-2.77.17,30.88,30.88,0,0,0-31.39-13.78A36.29,36.29,0,0,0,451,77.08a26.87,26.87,0,0,0-28.32,43.42Z"/></g></svg>'), 
+      0% 60% / 100% repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1444 135"><path fill="#DFDCAC" fill-rule="nonzero" d="M1444 133.09L0 134.34l.47-133 129 29.27 49.19 24.26h29.14l145.5-18.16L537.44 3.44 783.56 55l279.09-21.35 162.15 21.22h28.72l85.2-42.42L1444 .18"/></svg>'), 
+      linear-gradient(0deg, $sand 40%, #E5F0F6 40%); // Make the sky vertically take up 30% of the environment
 
-    @media (min-width: $section-breakpoint-md) {
-      background-size: 30%, 60%, 100%; // Make the clouds even smaller
+      @media (min-width: $section-breakpoint-xxs) {
+        background-position: 100% 5%, 0% 60%, center; // Remove additional padding on the clouds. They'll still have the padding defined in the svg itself.
+        background-size: 50%, 60%, 100%; // Make the clouds smaller if there's enough real estate for the tree to take up more space
+      }
+
+      @media (min-width: $section-breakpoint-xs) {
+        background-position: top left, 0% 60%, center; // Remove additional padding on the clouds. They'll still have the padding defined in the svg itself.
+        background-size: 50%, 60%, 100%; // Make the clouds smaller if there's enough real estate for the tree to take up more space
+      }
+
+      @media (min-width: $section-breakpoint-md) {
+        background-size: 30%, 60%, 100%; // Make the clouds even smaller
+      }
     }
-   }
   }
 
   &__story {
@@ -112,63 +110,63 @@
     &--polar {
       background: $muted-sky;
     }
+  }
 
-    &-heading {
-      font-family: $heading;
-      font-weight: bold;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      margin: 0;
-      padding: 0;
-      text-align: center;
+  &__heading {
+    font-family: $heading;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 
-      @media (min-width: $section-breakpoint-xxs) {
-        text-align: left;
-      }
-
-      @media (min-width: $section-breakpoint-xs) {
-        font-size: 3.8vw; // 24px / 624x = .038461538 Move the decimal point for vw measurement.
-      }
-
-      @media (min-width: $section-breakpoint-sm) {
-        text-align: left; // Align text left once floated to the right of the image
-      }
-
-      @media (min-width: $section-breakpoint-xl) {
-        font-size: 3.25rem; // Set a max font-size
-      }
-
-      &--emphasis {
-        font-size: 2.25rem;
-        font-family: $heading-emphasis;
-        display: block;
-
-        @media (min-width: $section-breakpoint-xxs) {
-          font-size: 6.7vw; // 24px / 480px = .066666667
-        }
-  
-        @media (min-width: $section-breakpoint-sm) {
-          font-size: 5.9vw; // 42px / 704px = .059659091. Move the decimal point for the viewport width.
-        }
-  
-        @media (min-width: $section-breakpoint-lg) {
-          font-size: 4.37rem; // Set a max font size
-        }
-      }
+    @media (min-width: $section-breakpoint-xxs) {
+      text-align: left;
     }
 
-    &-text {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin: 1rem 0 0;
-  
-      @media (min-width: $section-breakpoint-xs) {
-        font-size: 1.125rem;
+    @media (min-width: $section-breakpoint-xs) {
+      font-size: 3.8vw; // 24px / 624x = .038461538 Move the decimal point for vw measurement.
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      text-align: left; // Align text left once floated to the right of the image
+    }
+
+    @media (min-width: $section-breakpoint-xl) {
+      font-size: 3.25rem; // Set a max font-size
+    }
+
+    &--emphasis {
+      font-size: 2.25rem;
+      font-family: $heading-emphasis;
+      display: block;
+
+      @media (min-width: $section-breakpoint-xxs) {
+        font-size: 6.7vw; // 24px / 480px = .066666667
       }
-  
+
       @media (min-width: $section-breakpoint-sm) {
-        font-size: 1.3125rem;
+        font-size: 5.9vw; // 42px / 704px = .059659091. Move the decimal point for the viewport width.
       }
+
+      @media (min-width: $section-breakpoint-lg) {
+        font-size: 4.37rem; // Set a max font size
+      }
+    }
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 1rem 0 0;
+
+    @media (min-width: $section-breakpoint-xs) {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: $section-breakpoint-sm) {
+      font-size: 1.3125rem;
     }
   }
 }
