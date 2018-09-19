@@ -1,0 +1,54 @@
+.header {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-unit; 
+  padding: 0;
+  box-sizing: border-box; // Add padding to total container width
+
+  @media (min-width: $section-breakpoint-sm) {
+    justify-content: space-between;
+  }
+
+  @media (min-width: $section-breakpoint-md) {
+    width: 90%;
+  }
+
+  @media (min-width: $section-breakpoint-lg) {
+    margin: 3rem auto 0;
+  }
+
+  &__logo {
+    width: 20rem;
+    height: auto;
+  }
+
+  &__button {
+    display: none;
+    border: none;
+    background: none;
+    padding: 0.5rem 1.75rem;
+    box-sizing: border-box;
+    border: 0.125rem solid $deep-purple;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $deep-purple;
+    font-family: $heading;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition-property: background, color;
+    transition-duration: 0.3s; 
+    cursor: pointer;
+
+    @media (min-width: $section-breakpoint-sm) {
+      display: block;
+    }
+
+    &:hover {
+      background: $deep-purple;
+      color: $white;
+    }
+  }
+}

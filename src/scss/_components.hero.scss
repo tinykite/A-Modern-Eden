@@ -15,11 +15,11 @@ $hero-breakpoint-xl: 75rem;
 
     @media (min-width: $hero-breakpoint-lg) {
       width: 90%; // Constrain the olive backround so the Zebra can sit outside of it
-      margin: 4rem auto; // Adds additional white space for the Zebra
+      margin: 1rem auto 3rem; // Adds additional white space for the Zebra
     }
 
     @media (min-width: $hero-breakpoint-xl) {
-      margin: 6.25rem auto; // As the zebra grows
+      margin: 3rem auto 5rem; // As the zebra grows
     }
   }
 
