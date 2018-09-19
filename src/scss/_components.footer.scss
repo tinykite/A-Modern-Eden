@@ -1,0 +1,24 @@
+.footer {
+  &__text {
+    width: 90%; 
+    margin: 0 auto;
+    padding: 2rem 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    @media (min-width: $section-breakpoint-md) {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      font-size: 1.3125rem;
+      padding: 2.8125rem 0;
+    }
+
+    &--emphasis {
+      font-weight: bold;
+    }
+  }
+}
