@@ -1,21 +1,23 @@
-.theme {
-    &__mint {
-        background: $mint;
-    }
+.theme-mint {
+  background: $mint;
+}
 
-    &__seafoam {
-        background: $seafoam;
-    }
+.theme-seafoam {
+  background: $seafoam;
+}
     
-    &__polar {
-        background: $polar;
-    }
+.theme-polar {
+  background: $polar;
+}
     
-    &__ocean {
-        background: $deep-sea-secondary;
-    }
+.theme-ocean {
+  background: $deep-sea-secondary;
+}
 
-    &__desert {
-        background: $sand;
-    }
+.theme-desert {
+  background: $sand;
+}
+
+.theme-dusty-pink {
+  background: $dusty-pink;
 }

@@ -37,6 +37,14 @@
         padding: 18vh 0 12vh;
       }
     }
+
+    &--desert { // Desert needs additional space on top and bottom of the container
+      overflow: hidden; // We're defining this so we can push the tree off-screen
+
+      @media (min-width: $section-breakpoint-xs) {
+        padding: 18vh 0 12vh;
+      }
+    }
   }
 
   &__landscape {

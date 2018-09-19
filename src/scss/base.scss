@@ -19,6 +19,7 @@
 // OBJECTS
 @import "objects.theme";
 @import "objects.environment";
+@import "objects.layout";
 
 // COMPONENTS
 @import "components.intro";
@@ -29,6 +30,8 @@
 @import "components.products";
 @import "components.accolades";
 @import "components.header";
+@import "components.contact";
+@import "components.stores";
 
 // UTILITIES
 @import "utilities.spacing-units";

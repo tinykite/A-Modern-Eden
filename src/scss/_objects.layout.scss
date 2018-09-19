@@ -1,0 +1,14 @@
+.sales-group {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+
+  @media (min-width: $section-breakpoint-md) {
+    flex-direction: row; // Reset to default direction
+  }
+
+  @media (min-width: $section-breakpoint-xxl) {
+    width: 65%;
+  }
+}

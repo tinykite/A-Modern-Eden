@@ -1,0 +1,39 @@
+<div class="theme-dusty-pink vert-spacing">
+  <div class="sales-group">
+    <section class="contact">
+      {{#with (data 'contact')}}
+      <h3 class="contact__heading">{{ contactHeading }}</h3>
+      <p class="contact__text">{{ contactText }}</p>
+      {{/with}}
+      <form class="contact-form"> 
+        <div class="contact-form__field">
+          <label class="contact-form__field--title" for="Name">Name</label>
+          <input class="contact-form__field--input" type="text" name="Name">
+        </div>
+        <div class="contact-form__field">
+          <label class="contact-form__field--title" for="Email Address">Email Address</label>
+          <input class="contact-form__field--input" type="text" name="Email Address">
+        </div>
+        <div class="contact-form__field">
+          <label class="contact-form__field--title" for="Message">Message</label>
+          <textarea class="contact-form__field--input contact-form__field--textarea" name="Message"></textarea>
+        </div>
+        <button class="contact-form__button" type="submit">Submit</button> 
+      </form>
+    </section>
+    <section class="stores">
+      {{#with (data 'stores')}}
+      <h4 class="stores__heading">{{ storeHeading }}</h4>
+      {{/with}}
+      <ul class="stores__list">
+        {{#each (data 'stores.storeList')}}
+        <li class="stores__item">
+          <h4 class="stores__title">{{ storeTitle }}</h4>
+          <p class="stores__text">{{ storeLocation }}</p>
+          <p class="stores__text">{{ storeLinks }}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+  </div>
+</div>
