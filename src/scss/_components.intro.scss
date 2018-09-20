@@ -8,8 +8,9 @@
   align-items: flex-start;
 
   @media (min-width: $section-breakpoint-sm) {
+    width: 100%;
     flex-direction: row; // Float the text to the right of the illustration
-    width: 85%;
+    padding: 8vh;
   }
 
   @media (min-width: $section-breakpoint-lg) {
@@ -17,17 +18,12 @@
   }
 
   &__illustration {
+    margin: 0 auto;
+    max-height: 25rem;
     @media (min-width: $section-breakpoint-xs) {
-      padding-right: 2rem;
       box-sizing: border-box;
-    }
-
-    @media (min-width: $section-breakpoint-sm) {
+      max-height: 35rem;
       flex: 1 0 50%; // Make sure the illustration only takes up 50% of the available space
-    }
-
-    @media (min-width: $section-breakpoint-lg) {
-      padding-right: 5rem;
     }
   }
 
@@ -38,8 +34,12 @@
     margin: 0 auto; // Necessary so text block centers underneath illustration
     
     @media (min-width: $section-breakpoint-sm) {
-      padding: 0; // Remove spacing when text sits adjacent to illustration
-      flex: 1 0 50%; // Make sure the text takes up 50% of the available space
+      padding: 0 0 0 2rem; // Remove spacing when text sits adjacent to illustration
+      flex: 0 0 50%; // Make sure the text takes up 50% of the available space
+    }
+
+    @media (min-width: $section-breakpoint-lg) {
+      padding-left: 0; // Padding is unecessary when the window is wide enough
     }
   }
 
@@ -49,13 +49,13 @@
     text-transform: uppercase;
     text-align: center;
     margin: 0;
+    padding: 0;
 
     @media (min-width: $section-breakpoint-xs) {
       font-size: 3.8vw; // 24px / 624x = .038461538 Move the decimal point for vw measurement.
     }
 
     @media (min-width: $section-breakpoint-sm) {
-      margin: 1rem 0;
       text-align: left; // Align text left once floated to the right of the image
     }
 
@@ -87,10 +87,6 @@
     margin: 1rem 0;
 
     @media (min-width: $section-breakpoint-sm) {
-      font-size: 1rem;
-    }
-
-    @media (min-width: $section-breakpoint-md) {
       font-size: 1.125rem;
     }
   }
