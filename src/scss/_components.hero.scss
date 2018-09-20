@@ -1,46 +1,69 @@
+$hero-breakpoint-xxs: 21rem;
 $hero-breakpoint-xs: 30rem;
-$hero-breakpoint-sm: 35rem;
-$hero-breakpoint-md: 44rem;
+$hero-breakpoint-sm: 37.5rem;
+$hero-breakpoint-md: 50rem;
 $hero-breakpoint-lg: 60rem;
-$hero-breakpoint-xl: 75rem;
+$hero-breakpoint-xl: 70rem;
+$hero-breakpoint-xxl: 80rem;
+$hero-breakpoint-xxxl: 120rem;
 
 .hero {
   margin: 0;
+  padding: 3vh 0 5vh;
+  box-sizing: border-box;
+  overflow: hidden; // Let us push the zebra off-screen
   position: relative; // Necessary for illustration positioning
+  
+  @media (min-width: $hero-breakpoint-sm) {
+    padding: 5vh 0 8vh;
+  }
+
+  @media (min-width: $hero-breakpoint-xxxl) {
+    padding: 6vh 0 10vh;
+  }
+
+  @media (min-width: $hero-breakpoint-xxl) {
+    overflow: visible; // Make sure the Zebra's head hair is visible at larger sizes
+  }
 
   &__inner {
-    padding: $spacing-unit; 
     box-sizing: border-box; // Add padding to total container width
     background: $olive;
+    width: 90%; // Constrain the olive background so the Zebra can sit outside of it
+    margin: 0 auto;
+    padding: 1rem;
 
-    @media (min-width: $hero-breakpoint-lg) {
-      width: 90%; // Constrain the olive backround so the Zebra can sit outside of it
-      margin: 1rem auto 3rem; // Adds additional white space for the Zebra
+    @media (min-width: $hero-breakpoint-xs) {
+      padding: 2rem;
     }
 
-    @media (min-width: $hero-breakpoint-xl) {
-      margin: 3rem auto 5rem; // As the zebra grows
+    @media (min-width: $hero-breakpoint-md) {
+      padding: 4vw; // We'll switch to viewport units so that when we have a very wide screen that's not very tall, the Zebra doesn't bust out of the box in a super unflattering way.
+    }
+
+    @media (min-width: $hero-breakpoint-xxl) {
+      padding: 4.6vw;
+    }
+
+    @media (min-width: $hero-breakpoint-xxxl) {
+      padding: 4vw; // Adjustment for extremely wide screens
     }
   }
 
   &__heading {
     font-family: $heading;
-    font-size: 2.25rem;
+    font-size: 2.125rem;
     text-transform: uppercase;
     color: $white;
     line-height: 1;
     margin: 0;
-    text-align: center;
-    padding-top: $spacing-unit; // Necessary for stacked mobile layout 
-  
-    @media (min-width: $hero-breakpoint-sm) {
-      text-align: left;
-      padding: 0; // Remove xs layout padding
-      font-size: 8vw; // 50px / 624px = .080128205. Move the decimal point for vw width
+
+    @media (min-width: $hero-breakpoint-xxs) {
+      font-size: 10.1vw; // 34px / 336px = .101190476. Move the decimal point for vw values.
     }
-  
-    @media (min-width: $hero-breakpoint-lg) {
-      font-size: 5.3125rem; // Set a max font-size so text doesn't get too big
+
+    @media (min-width: $hero-breakpoint-md) {
+      font-size: 5.3125rem;
     }
 
     &--emphasis {
@@ -51,42 +74,47 @@ $hero-breakpoint-xl: 75rem;
 
   &__body {
     font-family: $body;
+    font-weight: 900;
     color: $white;
-    text-align: center;
-    padding: 1rem 0 0;
-    margin: 0 auto;
-
-    @media (min-width: $hero-breakpoint-xs) {
-      width: 90%; // Constrain the width of the text block
-    }
+    width: 85%;
+    font-size: 1rem;
+    margin: 1rem 0 0; // Add space between body text and heading
 
     @media (min-width: $hero-breakpoint-sm) {
-      text-align: left;
-      margin: 0; // We don't want the text block centered on the page
-      width: 50%; 
+      width: 70%;
+    }
+
+    @media (min-width: $hero-breakpoint-md) {
+      font-size: 1.125rem;
+      width: 60%;
     }
 
     @media (min-width: $hero-breakpoint-lg) {
+      width: 50%;
       font-size: 1.3125rem;
-    }
-  }
-
-  &__illustration {
-    height: 35vh; // At very small sizes, we need the illustration to scale proportionately
-    margin: 0 auto;
-
-    @media (min-width: $hero-breakpoint-sm) {
-      position: absolute;
-      right: $spacing-unit;
-      height: 85%;
-      transform: translateY(50%);
-      bottom: 50%;
     }
 
     @media (min-width: $hero-breakpoint-xl) {
-      height: 120%;
+      max-width: 40rem;
+    }
+  }
+
+  &__illustration { 
+    position: absolute;
+    width: 60vw;
+    max-width: 30rem; // Make sure Zebra doesn't grow too tall at super wide displays
+    left: calc(100% - 30vw); // Horizontally pull the Zebra halfway into the viewport
+    top: 1vh; // Vertically pull the Zebra into the top of the outer padding on the hero
+
+    @media (min-width: $hero-breakpoint-xl) {
+      width: 35vw; 
+      left: 49vw;
+      top: -0.5rem; // Unfortunately, at large sizes the Zebra's ears are invisible. And it makes the Zebra look not vertically aligned right! This is a fix. 
+    }
+
+    @media (min-width: $hero-breakpoint-xxxl) {
       top: 0;
-      transform: translate(-40%, -10%);
+      left: 40vw; // At very, very wide sizes, make sure the Zebra doesn't ever venture too far from the text
     }
   }
 }
