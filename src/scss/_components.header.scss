@@ -1,5 +1,6 @@
 .header {
-  margin: 1rem auto;
+  margin: 1.25rem auto 0;
+  width: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +10,7 @@
 
   @media (min-width: $section-breakpoint-sm) {
     justify-content: space-between;
+    width: 90%;
   }
 
   @media (min-width: $section-breakpoint-md) {
@@ -20,8 +22,12 @@
   }
 
   &__logo {
-    width: 20rem;
+    width: 15rem;
     height: auto;
+
+    @media (min-width: $section-breakpoint-md) {
+      width: 20rem;
+    }
   }
 
   &__button {
