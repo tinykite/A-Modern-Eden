@@ -74,7 +74,7 @@
       // Note: svg-url is a function that takes inline svg code and returns an IE-friendly data URI.
       background: bottom right / contain repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="320" height="388" viewBox="0 0 320 388"><g fill="none" fill-rule="nonzero"><path fill="#B5D5E5" d="M0 272h320v116H0z"/><path fill="#FFF" d="M0 0h320v271H0z"/><path fill="#E5F0F6" d="M0 272l22-121 15 70L66 52l28 108 14-71 34 176 18-82 19 82 36-117 28 117 19-57 16 44 24-86 18 106z"/></g></svg>'), $white;
       height: 50vh; // The polar scene needs more height at mobile
-
+      overflow: hidden;
       @media (min-width: $section-breakpoint-xxs) {
         height: auto;
       }

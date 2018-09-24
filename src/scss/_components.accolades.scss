@@ -107,4 +107,35 @@
       right: calc(100% + 4vw); // Keep Jellyfish closer to the content block at large sizes
     }
   }
+
+  &__jellyfish {
+    animation: jellyfish-dance 3s cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
+  }
+
+  &__heart {
+    opacity: 0;
+    animation: heart-twinkle 3s infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.3s; // This seems to be the smallest delay that's easy to spot as a perceptible change
+    }
+  }
+}
+
+@keyframes heart-twinkle {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes jellyfish-dance {
+  60% {
+    transform: translateY(-1%) rotate(0.25deg);
+  }
+  100% {
+    transform: translateY(unset);
+  }
 }

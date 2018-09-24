@@ -1,5 +1,9 @@
+// Ocean-specific animation variables
+$ocean-max-items: 10; // We need one more than the actual number of bubbles here
+$seaweed-max-items: 4;
+
 .ocean {
-  &__seaweed {
+  &__seaweed-group {
     $size: 45vh; // Take up 90% of 50vh, the mobile height of the ocean.
     height: $size;
     width: auto;
@@ -18,11 +22,22 @@
     }
   }
 
+  &__seaweed {
+    animation: seaweed-wave 8s infinite reverse;
+
+    @for $i from 1 to $seaweed-max-items {
+      &:nth-child(#{$i}) {
+        animation-delay: $i + random(10) * 0.1 + s;
+      }
+    }
+  }
+
   &__fish {
     $size: 30vh; // Grow to 60% of the height of ocean, which is 50vh;
     height: $size; // We'll use viewport widths because we want to make the fish scale with the viewport
     width: auto;
     position: absolute;
+    overflow: visible;
     top: calc(35vh / 4); // Push the fish to roughly the middle of the window
     right: calc(50% - #{$size / 2}); // Push the left edge of the fish to the middle of the screen.
 
@@ -47,5 +62,49 @@
       right: calc(50% - 8rem);
       top: 3rem;
     }
+
+    &-body {
+      animation: fish-dance 3s cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
+    }
+  }
+
+  &__bubble {
+    opacity: 0;
+    z-index: $z-index-5;
+    animation: bubble-drift 5s infinite;
+
+    @for $i from 1 to $ocean-max-items {
+      &:nth-child(#{$i}) {
+        animation-delay: $i + random(10) * 0.1 + s; // For each bubble, add a delay of 1s + a random number between 0.1 and 0.9. This will add just enough ambient "randomness" to the animation, that can still be easily tweaked in the future.
+      }
+    }
+  }
+}
+
+@keyframes seaweed-wave {
+  50% {
+    transform: rotate(0.5deg) scale(1.02);
+  }
+  100% {
+    transform: scale(1) rotate(unset);
+  }
+}
+
+@keyframes fish-dance {
+  60% {
+    transform: translateY(-2%) rotate(0.25deg);
+  }
+  100% {
+    transform: translateY(unset);
+  }
+}
+
+@keyframes bubble-drift {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%);
   }
 }

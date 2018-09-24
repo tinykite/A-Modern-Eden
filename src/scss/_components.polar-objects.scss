@@ -1,3 +1,5 @@
+$max-splash-items: 4;
+
 .polar {
   &__sun {
     position: absolute;
@@ -19,16 +21,13 @@
     }
   }
 
-  &__bear {
+  &-bear-container {
     $size: 40vw;
-    width: $size;
     position: absolute;
     top: calc(37.5vh + 0.25rem); // We have a set mobile height for the illustration of 50vh. 75% of 50vh is 37.5vh.
     right: calc(50% - #{$size} / 2); // Horizontally center the bear
-
+    
     @media (min-width: $section-breakpoint-xxs) {
-      width: 30vw;
-      height: auto;
       top: 80%;
       right: 5vw; // Keep the polar bear 5% away from the right edge of the window
     }
@@ -36,5 +35,122 @@
     @media (min-width: $section-breakpoint-xs) {
       top: 75%;
     }
+
+    &::before {
+      // We'll include the waves as a pseudo element of the polar bear.
+      // Note: svg-url is a function that returns an IE-friendly data URI.
+      // We also need to set the background-position to beneath the bottom of the container at smallest sizes
+      background: repeat-x 0% 125% svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="68" height="36" viewBox="0 0 68 36"><path fill="#B5D5E5" fill-rule="nonzero" d="M68 0v36H0V0c3.67 8.89 17.52 20.74 34 20.74S66.19 6.04 68 0z"/></svg>');
+      background-size: 68px 36px;
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: waves 3s linear infinite forwards;
+
+      @media (min-width: $section-breakpoint-xxs) {
+        background-position: bottom;
+      }
+      }
+    }
+
+  &__bear {
+    $size: 40vw;
+    width: $size;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      width: 45vw;
+      height: auto;
+    }
+    
+    @media (min-width: $section-breakpoint-sm) {
+      width: 30vw;
+    }
+
+    &-body {
+      animation: bear-float 3s  cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
+    }
+
+    &-waves {
+      animation: wave-shift 3s cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
+    }
+
+    &-splash {
+      animation: splash-item 3s infinite;
+      opacity: 0;
+
+      @for $i from 1 to $max-splash-items {
+        &:nth-child(#{$i}) {
+          animation-delay: $i + random(10) * 0.1 + s;
+        }
+      }
+    }
+  }
+
+  &__penguin {
+    display: none;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      display: block;
+      position: absolute;
+      bottom: 30%; // 30% from the bottom the ocean ends. This positions the penguin on the top edge regardless of the ocean's actual size.
+      left: 25%;
+      width: 8vw;
+      height: auto;
+      animation: penguin-float 60s infinite;
+    }
+  }
+}
+
+@keyframes waves {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 4.25rem;
+    // background-position-x: calc(0.3 * 347px);
+  }
+}
+
+@keyframes penguin-float {
+  100% {
+    transform: translateX(100vw); 
+  }
+}
+
+@keyframes splash-item {
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(0, -2%);
+  }
+  90% {
+    opacity: 0;
+    transform: translate(unset);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(unset);
+  }
+}
+
+@keyframes bear-float {
+  50% {
+    transform: translateX(-2%) rotate(0.5deg);
+  }
+  100% {
+    transform: translateX(unset);
+  }
+}
+
+@keyframes wave-shift {
+  50% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(unset);
   }
 }

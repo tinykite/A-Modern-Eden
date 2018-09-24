@@ -28,6 +28,7 @@
     position: absolute;
     width: $size;
     height: auto;
+    overflow: visible; // Make sure animation doesn't get chopped off
     top: 45vh; // Push the lion 90% away from the top edge of the component, which is 50vh tall.
     transform: translateY(-100%); // Pull the bottom edge of the lion to that spot. Using a transform because we don't know the height.
     right: calc(50% - #{$size} / 2); // Horizontally center the lion, which is easy, cuz we know the width!
@@ -53,18 +54,48 @@
 
   &__grass {
     display: none; // Hide at mobile
+    overflow: visible; // Make sure the grass doesn't get cut off when animated
 
     @media (min-width: $section-breakpoint-md) {
       display: block; // Rewrite previous value
       position: absolute;
       right: 2vw; // This will keep the grass 2% away from the right edge of the window
-      bottom: 12vh;
-      height: 16vh;
+      bottom: 16vh;
+      height: 12vh;
       width: auto;
+      animation: grass-wave 3s infinite;
+      transform-origin: bottom left;
+
+      &--secondary {
+        bottom: 12vh;
+        right: 12vw;
+      }
     }
 
     @media (min-width: $section-breakpoint-lg) {
-      height: 18vh;
+      height: 14vh;
     }
+  }
+}
+
+.mane {
+  animation: mane-breeze 3s infinite;
+}
+
+@keyframes grass-wave {
+50% {
+    transform: skewX(-5deg);
+}
+100% {
+  transform: skewX(unset);
+}
+}
+
+@keyframes mane-breeze {
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(unset);
   }
 }
