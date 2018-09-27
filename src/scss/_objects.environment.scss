@@ -108,13 +108,13 @@
     z-index: $z-index-1;
 
     @media (min-width: $section-breakpoint-xxs) {
-      width: 50%;
-      padding: 2.5rem 2.75rem;
+      width: 60%;
+      padding: 2rem;
     }
 
     @media (min-width: $section-breakpoint-xs) {
-      width: 60%;
       max-width: 32rem;
+      padding: 2.5rem 2.75rem;
     }
 
     @media (min-width: $section-breakpoint-lg) {
