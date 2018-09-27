@@ -99,7 +99,7 @@ $max-splash-items: 4;
       left: 25%;
       width: 8vw;
       height: auto;
-      animation: penguin-float 60s infinite;
+      animation: penguin-float 45s infinite;
     }
   }
 }
@@ -110,7 +110,6 @@ $max-splash-items: 4;
   }
   100% {
     background-position-x: 4.25rem;
-    // background-position-x: calc(0.3 * 347px);
   }
 }
 
