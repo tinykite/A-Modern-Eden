@@ -10,7 +10,7 @@ const tasks = {
 
   // The JS task is omitted here, because JS is built out initially by the
   // `watch` task
-  development: ['copy', 'patterns', 'sass', 'server', 'watch'],
+  development: ['copy', 'patterns', 'sass', 'postsass', 'server', 'watch'],
 };
 
 function parallelTasks(env) {
