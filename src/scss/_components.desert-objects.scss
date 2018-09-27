@@ -1,4 +1,23 @@
 .desert {
+  &__clouds {
+    opacity: 0;
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    top: 5vh;
+    left: 0;
+    animation: cloud-drift 60s infinite;
+
+    @media (min-width: $section-breakpoint-xxs) {
+      top: 2vh;
+    }
+
+    @media (min-width: $section-breakpoint-md) {
+      width: 30vw;
+      height: auto;
+    }
+  }
+
   &__tree {
     $size: 37.5vh; // 75% of the total environment height, which is 50vh
     position: absolute;
@@ -82,13 +101,22 @@
   animation: mane-breeze 3s infinite;
 }
 
+@keyframes cloud-drift {
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
 @keyframes grass-wave {
-50% {
+  50% {
     transform: skewX(-5deg);
-}
-100% {
-  transform: skewX(unset);
-}
+  }
+  100% {
+    transform: skewX(unset);
+  }
 }
 
 @keyframes mane-breeze {
