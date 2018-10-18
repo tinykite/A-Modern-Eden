@@ -62,39 +62,39 @@
     }
 
     &--ocean {
-      background: bottom / 200% repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="1424" height="266" viewBox="0 0 1424 266"><path fill="#B1DEDF" fill-rule="nonzero" d="M0 266V0l71 29 35 104 67 55h22l67-70 40 15v25l140 18 28-72 23 2 59 50 34 9 13 30 35 12 52-74V0l34 11 31 77 53 26-25 51 54 25 18-1 18-30 34-146 38 21 67 99 41 81v-38l-11-67 11-32 188 39-40 115 28-12 12-54 70-49 63 75 54-191v266z"/></svg>'),
+      //Svg-url is a function that takes svg code and returns a data URI.
+      background: repeat-x bottom svg-url('<svg width="802" height="150" viewBox="0 0 802 150" xmlns="http://www.w3.org/2000/svg"><path fill="#B1DEDF" d="M0 150V0l39.977 16.352L59.696 75l37.736 31.01h12.393l37.735-39.468L170.085 75v14.094l78.852 10.151 15.768-40.597 12.957 1.122 33.226 28.216 19.15 5.078 7.32 16.916 19.713 6.765 29.288-41.725V0l19.15 6.201 17.459 43.425 29.845 14.678-14.078 28.741 30.416 14.094 10.138-.564 10.132-16.916 19.136-82.33 21.404 11.811 37.736 55.827 23.088 45.676V99.245l-6.206-37.782 6.193-18.044 105.886 21.994-22.531 64.849 15.768-6.771 6.763-30.446 39.42-27.632 35.487 42.29L802 0v150z" fill-rule="evenodd"/></svg>'),
       $deep-sea;
 
-      @media (min-width: $section-breakpoint-xs) {
-        background-size: 85%;
+      @media (min-width: $section-breakpoint-md) {
+        background: repeat-x bottom svg-url('<svg width="1224" height="229" viewBox="0 0 1224 229" xmlns="http://www.w3.org/2000/svg"><path fill="#B1DEDF" d="M0 229V0l61.012 24.964L91.108 114.5l57.591 47.343h18.914l57.591-60.256 34.377 12.913v21.518l120.343 15.497 24.065-61.979 19.774 1.713 50.71 43.076 29.226 7.753 11.172 25.825 30.086 10.328 44.699-63.701V0l29.225 9.467 26.646 66.295 45.549 22.409-21.485 43.877 46.419 21.518 15.473-.862 15.463-25.825L776.152 11.19l32.667 18.031 57.591 85.229 35.237 69.732v-32.667l-9.472-57.681 9.452-27.548 161.601 33.578-34.386 99.003 24.064-10.338 10.322-46.481 60.162-42.184 54.161 64.563L1224 0v229z" fill-rule="evenodd"/></svg>'),
+        $deep-sea;
       }
     }
 
     &--polar {
-      // Note: svg-url is a function that takes inline svg code and returns an IE-friendly data URI.
-      background: bottom right / contain repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="320" height="388" viewBox="0 0 320 388"><g fill="none" fill-rule="nonzero"><path fill="#B5D5E5" d="M0 272h320v116H0z"/><path fill="#FFF" d="M0 0h320v271H0z"/><path fill="#E5F0F6" d="M0 272l22-121 15 70L66 52l28 108 14-71 34 176 18-82 19 82 36-117 28 117 19-57 16 44 24-86 18 106z"/></g></svg>'), $white;
+      // // Note: svg-url is a function that takes inline svg code and returns an IE-friendly data URI.
+      background-image: svg-url('<svg width="173" height="221" viewBox="0 0 173 221" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path fill="#E5F0F6" d="M0 158l11.894-66 8.108 38.181L35.674 38l15.139 58.91 7.575-38.729 18.381 96 9.733-44.73 10.269 44.73 19.465-63.816 15.136 63.816 10.273-31.101 8.658 24 12.968-46.899L173 158z"/><path fill="#BBD4E3" d="M0 158h173v63H0z"/></g></svg>'),
+      linear-gradient(0deg, $polar 30%, $white 30%);
+      background-repeat: repeat-x;
+      background-position: right 65%, center;
       overflow: hidden;
+
+      @media (min-width: $section-breakpoint-xxs) {
+        // Includes a new background image for the water/icy crags. There is a sub-pixel rendering bug in Chrome and Safari that does not allow us to set the background-size property on the svg without visible gaps inbetween the tiled background images. 
+        background-image: svg-url('<svg width="499" height="523" viewBox="0 0 499 523" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path fill="#E5F0F6" d="M0 343l34.306-188.65 23.387 109.133L102.899 0l43.667 168.384 21.849-110.701 53.018 274.4 28.072-127.851 29.621 127.851 56.145-182.408 43.657 182.408 29.631-88.897 24.975 68.6 37.404-134.053L499 343z"/><path fill="#BBD4E3" d="M0 343h499v180H0z"/></g></svg>'),
+        linear-gradient(0deg, $polar 30%, $white 30%);
+      }
     }
       
     &--desert {
-      // We'll define three different layered backgrounds here for the desert.
-      // These backgrounds are layered in this order (first listed background is layered on top):
-      // Svg-based clouds, positioned 10% from the top of the screen (Note: the svg itself has additional padding!)
+      // We'll define two different layered backgrounds here for the desert.
+      // These backgrounds are layered from bottom to top, in this order:
       // Svg-based "hills", positioned 60% from the top of the desert
       // A linear gradient background color with zero color stops (eg, no transition). The gradient is 40% sky and 60% desert.
-      // Also note: The svgs are passed to a "svg-url" function, which returns an IE-compatible data URI
-      // background: 0% 10% / 60% no-repeat svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 696 241"><defs><style>.cls-1{fill:#a3ccdd;}.cls-2{fill:#fefefe;}</style></defs><title>cloud-box-not-wide</title><g id="Layer_2" data-name="Layer 2"><path id="deep-blue-cloud" class="cls-1" d="M384.67,175a16.84,16.84,0,0,0,.33-3.35A17.36,17.36,0,0,0,355,159.74a17.3,17.3,0,0,0-11.65-5.46,25.16,25.16,0,0,0-30.39-14.74,37.28,37.28,0,0,0-35.23-25.17,37.82,37.82,0,0,0-4.28.27,48.08,48.08,0,0,0-40.4-22,48.73,48.73,0,0,0-8.07.72,56,56,0,0,0-89.72,14.55,41.47,41.47,0,0,0-43.73,67Z"/><path id="white-cloud" class="cls-2" d="M612.58,120.5a11.23,11.23,0,0,0-19.24-9.85,11.21,11.21,0,0,0-7.55-3.54,16.33,16.33,0,0,0-15.13-10.2,16.75,16.75,0,0,0-4.56.65,24.13,24.13,0,0,0-22.81-16.29,23,23,0,0,0-2.77.17,30.88,30.88,0,0,0-31.39-13.78A36.29,36.29,0,0,0,451,77.08a26.87,26.87,0,0,0-28.32,43.42Z"/></g></svg>'), 
-      background: 0% 60% / 100% repeat-x svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="1444" height="134" viewBox="0 0 1444 134"><path fill="#DFDCAC" fill-rule="nonzero" d="M1444 133L0 134V1l129 29 50 25h29l145-19L537 3l247 52 279-22 162 22h29l85-43 105-12"/></svg>'), 
+      // The svgs are passed to a "svg-url" function, which returns an IE-compatible data URI
+      background: 0% 60% repeat-x svg-url('<svg width="484" height="56" viewBox="0 0 484 56" xmlns="http://www.w3.org/2000/svg"><path fill="#DFDCAC" d="M484 56H0V2.844l40.577 19.403 61.464-8.129L180.046 0l104.709 22.247L484 2.844" fill-rule="evenodd"/></svg>'), 
       linear-gradient(0deg, $sand 40%, #E5F0F6 40%); // Make the sky vertically take up 40% of the environment
-
-      @media (min-width: $section-breakpoint-xxs) {
-        background-position: 0% 60%, center;
-        background-size: 60%, 100%;
-      }
-
-      @media (min-width: $section-breakpoint-xs) {
-        background-position: 0% 60% center;
-      }
     }
   }
 
